@@ -1,0 +1,33 @@
+# https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-jupyterhub.html#
+proxy:
+  secretToken: "open_hex"
+singleuser:
+  # https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html
+  image:
+    name: pupster90/io
+    tag: try6
+  # https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html
+  lifecycleHooks:
+    postStart:
+      exec:
+        command: ["sh","-c","rm -rf Welcome_to_io_Hub && git clone https://github.com/pupster90/Welcome_to_io_Hub.git"]
+  # https://zero-to-jupyterhub.readthedocs.io/en/latest/user-storage.html
+  storage:
+    dynamic:
+      storageClass: jupyterhub-user-ssd
+# https://zero-to-jupyterhub.readthedocs.io/en/latest/optimization.html
+prePuller:
+  hook:
+    enabled: false
+  continuous:
+    enabled: true
+    
+# https://zero-to-jupyterhub.readthedocs.io/en/latest/authentication.html
+#auth:
+#  type: google
+#  google:
+#    clientId: "244479093220-89vej4bcpg18nf5b0ouk7q5vs7bks5r4.apps.googleusercontent.com"
+#    clientSecret: "qnKEczw2QzQvuavznaIqITmI"
+#    callbackUrl: "http://idekerlab.io.computer/hub/oauth_callback"
+#    hostedDomain: "ucsd.edu"
+#    loginService: "UCSD"

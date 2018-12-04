@@ -1,0 +1,22 @@
+# **NOTE** When creating cluster ADD THIS
+#  --node-labels hub.jupyter.org/node-purpose=core
+### Helm Commands ###
+kubectl --namespace kube-system create serviceaccount tiller
+kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
+helm init --service-account tiller
+kubectl patch deployment tiller-deploy --namespace=kube-system --type=json --patch='[{"op": "add", "path": "/spec/template/spec/containers/0/command", "value": ["/tiller", "--listen$
+helm version
+### Jupyter Commands ###
+RELEASE=jhub
+NAMESPACE=jhub
+### RUN! ###
+# Create Optimized Storage Class
+kubectl apply -f storageclass.yaml
+# Start Jupyterhub
+helm upgrade --install $RELEASE jupyterhub/jupyterhub --namespace $NAMESPACE --version 0.7.0-beta.2 --values config.yaml
+# **EDIT** Start Jupyterhub
+helm upgrade --install $RELEASE jupyterhub/jupyterhub --namespace $NAMESPACE --version 0.7-cb6890c --values config.yaml
+# Upgrade Jupyterhub
+helm upgrade $RELEASE jupyterhub/jupyterhub --version=0.7.0-beta.2 --values config.yaml
+# **EDIT**  Upgrade Jupyterhub
+helm upgrade jhub jupyterhub/jupyterhub --version=0.7-cb6890c  --values config.yaml
