@@ -1,11 +1,11 @@
 # https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-jupyterhub.html#
 proxy:
-  secretToken: "open_hex"
+  secretToken: "<RANDOM_HEX>"
 singleuser:
   # https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html
   image:
-    name: pupster90/io
-    tag: try6
+    name: gcr.io/pupster900/io
+    tag: latest
   # https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html
   lifecycleHooks:
     postStart:
@@ -15,6 +15,7 @@ singleuser:
   storage:
     dynamic:
       storageClass: jupyterhub-user-ssd
+
 # https://zero-to-jupyterhub.readthedocs.io/en/latest/optimization.html
 prePuller:
   hook:
