@@ -3,6 +3,7 @@
 ###
 
 ### Overview
+# When making clusters type: hub.jupyter.org/node-purpose=core
 # At the time of this tutorial I used helm versions 2.11 and jupyterhub version 0.7.0
 # Helm Releases: https://github.com/helm/helm/releases
 # JupyterHub Releases: https://jupyterhub.github.io/helm-chart/
