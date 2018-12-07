@@ -15,9 +15,10 @@ singleuser:
       exec:
         command: ["sh","-c","rm -rf Welcome_to_io_Hub && git clone https://github.com/pupster90/Welcome_to_io_Hub.git"]
   # https://zero-to-jupyterhub.readthedocs.io/en/latest/user-storage.html
-  storage:
-    dynamic:
-      storageClass: jupyterhub-user-ssd
+  # NOTE: I couldn't get this working, will try later
+  #storage:
+  #  dynamic:
+  #    storageClass: jupyterhub-user-ssd
 
 # https://zero-to-jupyterhub.readthedocs.io/en/latest/optimization.html
 prePuller:
