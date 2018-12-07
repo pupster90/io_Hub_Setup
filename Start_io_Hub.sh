@@ -7,7 +7,7 @@
 # Helm Releases: https://github.com/helm/helm/releases
 # JupyterHub Releases: https://jupyterhub.github.io/helm-chart/
 # Helm Tutorial: https://docs.helm.sh/using_helm/#quickstart-guide
-JUPYTER_VERSION=0.7.0-beta.2c
+JUPYTER_VERSION=0.8-ccc1e6b
 
 ### Download & Set Up Helm
 # https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-helm.html
@@ -17,9 +17,11 @@ kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceac
 helm init --service-account tiller
 kubectl patch deployment tiller-deploy --namespace=kube-system --type=json --patch='[{"op": "add", "path": "/spec/template/spec/containers/0/command", "value": ["/tiller", "--listen=localhost:44134"]}]'
 
+# Make io Hub faster, Create Optimized Storage Class
+kubectl apply -f storageclass.yaml
 
 ### Create & Run JupyterHub
-https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-jupyterhub.html
+# https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-jupyterhub.html
 # Add Security Token to config.yaml
 sed -i 's/<RANDOM_HEX>/'"$( openssl rand -hex 32 )"'/g' config.yaml
 # Add jupyterhub github repo to helm

@@ -1,4 +1,7 @@
-# https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-jupyterhub.html#
+# This file determines the settings of your jupyterhub
+# if u want a bettter idea of what the code is doing, check out the web links
+
+# https://zero-to-jupyterhub.readthedocs.io/en/latest/setup-jupyterhub.html
 proxy:
   secretToken: "<RANDOM_HEX>"
 singleuser:
@@ -22,13 +25,34 @@ prePuller:
     enabled: false
   continuous:
     enabled: true
-    
+
+### Set Allowed Users
+# There are 2 ways of doing this, see JupyterHub tutorial    
 # https://zero-to-jupyterhub.readthedocs.io/en/latest/authentication.html
+# WAY 1: Manually add  allowed users : (this is WAY easier)
 #auth:
+#  whitelist:
+#  users:
+#    - user1
+#    - user2
+#
+# WAY 2: Add users using gmail accounts, or Oauth : (this is HARD)
+# 1: U need a website name, see google domains:
+# https://domains.google/
+# 2: U need to registe website with googel webmaster
+# https://www.google.com/webmasters/tools/
+# 3: U need to Set google cloud DNS records
+# https://support.google.com/domains/answer/6147083?hl=en
+# 4: This is great video on DNS records
+# https://www.youtube.com/watch?v=4iciq0ck8Ns
+# 5: Might come in handy (forgot where):
+# https://developers.google.com/api-client-library/python/start/get_started
+# 6: Again, Might come in handy (forgot where)
+# https://gist.github.com/cyrusboadway/5a7b715665f33c237996
 #  type: google
 #  google:
-#    clientId: "244479093220-89vej4bcpg18nf5b0ouk7q5vs7bks5r4.apps.googleusercontent.com"
-#    clientSecret: "qnKEczw2QzQvuavznaIqITmI"
-#    callbackUrl: "http://idekerlab.io.computer/hub/oauth_callback"
+#    clientId: ""
+#    clientSecret: ""
+#    callbackUrl: "http://urwebsite.com/hub/oauth_callback"
 #    hostedDomain: "ucsd.edu"
 #    loginService: "UCSD"
