@@ -7,7 +7,7 @@ proxy:
 singleuser:
   # https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html
   image:
-    name: gcr.io/pupster900/io
+    name: pupster90/io
     tag: latest
   # https://zero-to-jupyterhub.readthedocs.io/en/latest/user-environment.html
   lifecycleHooks:
